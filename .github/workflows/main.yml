@@ -28,6 +28,7 @@ jobs:
       - name: Copy Flask app into Android assets
         run: |
           cd Kisan-Sahayak-main
+          chmod +x sync_webapp.sh
           ./sync_webapp.sh
 
       - name: Build APK
