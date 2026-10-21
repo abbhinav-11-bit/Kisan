@@ -27,17 +27,17 @@ jobs:
 
       - name: Copy Flask app into Android assets
         run: |
-          cd Kisan-Sahayak-main
+          cd Shram-Setu-main
           chmod +x sync_webapp.sh
           ./sync_webapp.sh
 
       - name: Build APK
         run: |
-          cd Kisan-Sahayak-main/android
+          cd Shram-Setu-main/android
           gradle assembleDebug --no-daemon
 
       - name: Upload APK
         uses: actions/upload-artifact@v4
         with:
           name: KisanSahayak-apk
-          path: Kisan-Sahayak-main/android/app/build/outputs/apk/debug/app-debug.apk
+          path: Shram-Setu-main/android/app/build/outputs/apk/debug/app-debug.apk

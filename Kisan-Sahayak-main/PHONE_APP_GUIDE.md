@@ -1,4 +1,4 @@
-# Kisan Sahayak as a phone app
+# Shram Setu as a phone app
 
 The project is now an installable **PWA** (Progressive Web App). Your Flask backend stays as it is;
 the phone installs it like a normal app (home-screen icon, full screen, offline fallback page).

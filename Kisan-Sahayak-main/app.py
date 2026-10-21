@@ -104,7 +104,7 @@ def get_mandi_prices(limit=10, state=None):
             url,
             headers={
                 "Accept": "application/json",
-                "User-Agent": "Kisan-Sahayak/1.0"
+                "User-Agent": "Shram-Setu/1.0"
             }
         )
 
@@ -1088,7 +1088,7 @@ def register():
         session['user_id'] = new_user['id']
         conn.close()
 
-        flash(f'Welcome to Kisan Sahayak, {full_name}! Your account is ready.', 'success')
+        flash(f'Welcome to Shram Setu, {full_name}! Your account is ready.', 'success')
         return redirect(url_for('dashboard'))
 
     return render_template('register.html')
@@ -1470,5 +1470,5 @@ if __name__ == '__main__':
     # HOST=0.0.0.0 lets a phone on the same Wi-Fi reach the app during testing
     host = os.environ.get('HOST', '127.0.0.1')
     port = int(os.environ.get('PORT', 5000))
-    print(f"Starting Kisan Sahayak on http://{host}:{port} (debug={is_debug})")
+    print(f"Starting Shram Setu on http://{host}:{port} (debug={is_debug})")
     app.run(debug=is_debug, host=host, port=port)

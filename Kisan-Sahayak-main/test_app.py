@@ -1,5 +1,5 @@
 """
-Automated Test Suite for Kisan Sahayak Web Application
+Automated Test Suite for Shram Setu Web Application
 Isolated Test Database Environment with Secure Environment-based Admin Authentication
 """
 
@@ -38,7 +38,7 @@ class KisanSahayakTestCase(unittest.TestCase):
         """Test homepage rendering and dynamic statistics."""
         response = self.client.get('/')
         self.assertEqual(response.status_code, 200)
-        self.assertIn(b'Kisan Sahayak', response.data)
+        self.assertIn(b'Shram Setu', response.data)
         self.assertIn(b'Empowering Farmers with the', response.data)
         self.assertIn(b'Right Resources', response.data)
         self.assertIn(b'Everything a Farmer Needs', response.data)

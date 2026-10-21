@@ -1,5 +1,5 @@
 /**
- * Kisan Sahayak — Interactive JavaScript Handlers
+ * Shram Setu — Interactive JavaScript Handlers
  * Features: Mobile drawer, AJAX bookmarking, post likes, star ratings, modal controllers, 
  * client-side filtering, scroll reveals, back-to-top button, smooth UI transitions.
  */

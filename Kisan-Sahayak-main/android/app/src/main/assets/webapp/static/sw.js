@@ -1,4 +1,4 @@
-/* Kisan Sahayak service worker.
+/* Shram Setu service worker.
    - Static assets: cache-first (fast, works offline)
    - Pages (GET navigations): network-first, fall back to cached copy, then /offline
    - POST / API calls are never cached. */

@@ -1,7 +1,7 @@
-# Kisan Sahayak (किसान सहायक)
+# Shram Setu
 > **“Smart Resources. Better Farming. Stronger Farmers.”**
 
-A modern, responsive web application and agriculture resource platform designed specifically for Indian farmers. Kisan Sahayak acts as a centralized digital portal connecting cultivators with verified government schemes, high-yield crop guides, modern farming machinery, regional weather advisories, trusted agricultural marketplaces, and an active farmer community forum.
+A modern, responsive web application and agriculture resource platform designed specifically for Indian farmers. Shram Setu acts as a centralized digital portal connecting cultivators with verified government schemes, high-yield crop guides, modern farming machinery, regional weather advisories, trusted agricultural marketplaces, and an active farmer community forum.
 
 ---
 
@@ -119,4 +119,4 @@ python test_app.py
 ---
 
 ## ⚖️ Disclaimer
-Information displayed on Kisan Sahayak is compiled for educational and informational purposes. Kisan Sahayak redirects farmers toward authorized official government websites and services. Users should verify official scheme guidelines, eligibility rules, and documentation requirements from the respective official department portals.
+Information displayed on Shram Setu is compiled for educational and informational purposes. Shram Setu redirects farmers toward authorized official government websites and services. Users should verify official scheme guidelines, eligibility rules, and documentation requirements from the respective official department portals.

@@ -12,7 +12,7 @@ Weather, live mandi rates and external links need internet; everything else work
 
 ## Install on a phone
 Send `app-debug.apk` to the phone (WhatsApp, Google Drive, USB, email), tap it,
-allow "Install unknown apps" when asked, then tap Install. Open **Kisan Sahayak** from the app drawer.
+allow "Install unknown apps" when asked, then tap Install. Open **Shram Setu** from the app drawer.
 
 ## Or build on your PC
 Install Android Studio, then:
