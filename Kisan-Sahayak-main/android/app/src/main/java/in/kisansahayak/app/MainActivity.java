@@ -54,7 +54,7 @@ public class MainActivity extends Activity {
         web.loadDataWithBaseURL(null,
             "<html><body style='margin:0;background:#15803d;color:#fff;font-family:sans-serif;"
             + "display:flex;align-items:center;justify-content:center;height:100vh;text-align:center'>"
-            + "<div><h2>Kisan Sahayak</h2><p>किसान सहायक</p><p style='opacity:.8'>Starting…</p></div></body></html>",
+            + "<div><h2>Shram Setu</h2><p>श्रम सेतु</p><p style='opacity:.8'>Starting…</p></div></body></html>",
             "text/html", "utf-8", null);
 
         new Thread(this::boot).start();

@@ -72,10 +72,14 @@
               <a href="{{ url_for('admin_dashboard') }}" class="btn btn-secondary btn-sm admin-tag" title="Admin Control Center">
                 <i class="fa-solid fa-shield-halved"></i> Admin
               </a>
+            {% else %}
+              <a href="{{ url_for('admin_login') }}" class="btn btn-secondary btn-sm admin-tag" title="Admin Login Portal">
+                <i class="fa-solid fa-shield-halved"></i> Admin Login
+              </a>
             {% endif %}
 
-            <div class="user-badge">
-              <div class="user-avatar-mini">
+            <div class="user-chip">
+              <div class="user-icon-wrap">
                 <i class="fa-solid fa-user"></i>
               </div>
               <a href="{{ url_for('profile') }}" style="color: inherit; font-weight: 700;">{{ current_user.full_name.split(' ')[0] }}</a>
@@ -121,6 +125,8 @@
         <li><a href="{{ url_for('profile') }}" class="mobile-nav-link {% if request.path == '/profile' %}active{% endif %}"><i class="fa-solid fa-user-gear"></i> Farmer Profile</a></li>
         {% if current_user.role == 'admin' %}
           <li><a href="{{ url_for('admin_dashboard') }}" class="mobile-nav-link"><i class="fa-solid fa-shield-halved"></i> Admin Dashboard</a></li>
+        {% else %}
+          <li><a href="{{ url_for('admin_login') }}" class="mobile-nav-link"><i class="fa-solid fa-shield-halved"></i> Admin Login</a></li>
         {% endif %}
       {% endif %}
       <li><a href="{{ url_for('crops') }}" class="mobile-nav-link {% if request.path == '/crops' %}active{% endif %}"><i class="fa-solid fa-seedling"></i> Seeds & Crops Directory</a></li>

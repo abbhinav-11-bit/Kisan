@@ -1140,6 +1140,44 @@ def login():
 
     return render_template('login.html')
 
+@app.route('/admin/login', methods=['GET', 'POST'])
+def admin_login():
+    if g.user:
+        if g.user['role'] == 'admin':
+            return redirect(url_for('admin_dashboard'))
+        return redirect(url_for('dashboard'))
+
+    if request.method == 'POST':
+        username_or_email = request.form.get('username_or_email', '').strip().lower()
+        password = request.form.get('password', '')
+
+        if not username_or_email or not password:
+            flash('Please enter both admin credentials.', 'danger')
+            return render_template('admin_login.html')
+
+        env_admin_user = os.environ.get('ADMIN_USERNAME', '').strip().lower()
+        env_admin_pass = os.environ.get('ADMIN_PASSWORD', '').strip()
+
+        conn = get_db()
+        if env_admin_user and env_admin_pass:
+            if (username_or_email == env_admin_user or username_or_email == f"{env_admin_user}@kisansahayak.in") and password == env_admin_pass:
+                sync_admin_credentials(conn)
+
+        user = conn.execute("""
+        SELECT * FROM users WHERE LOWER(username) = ? OR LOWER(email) = ?
+        """, (username_or_email, username_or_email)).fetchone()
+        conn.close()
+
+        if user and user['role'] == 'admin' and check_password_hash(user['password_hash'], password):
+            session['user_id'] = user['id']
+            session.permanent = True
+            flash('Admin login successful. Welcome to the control center.', 'success')
+            return redirect(url_for('admin_dashboard'))
+
+        flash('Invalid administrator username or password.', 'danger')
+
+    return render_template('admin_login.html')
+
 @app.route('/logout')
 def logout():
     session.pop('user_id', None)

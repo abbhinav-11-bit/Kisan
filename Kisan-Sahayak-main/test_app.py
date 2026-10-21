@@ -228,5 +228,18 @@ class KisanSahayakTestCase(unittest.TestCase):
         self.assertIn(b'Access denied', farmer_admin_page.data)
         self.assertNotIn(b'Farmer Usage Overview', farmer_admin_page.data)
 
+    def test_13_admin_login_dashboard_route(self):
+        """Dedicated admin login screen should exist and allow admin access."""
+        admin_page = self.client.get('/admin/login')
+        self.assertEqual(admin_page.status_code, 200)
+        self.assertIn(b'Admin Access Portal', admin_page.data)
+
+        login_result = self.client.post('/admin/login', data={
+            'username_or_email': 'custom_admin',
+            'password': 'SecureAdminPass2026!'
+        }, follow_redirects=True)
+        self.assertEqual(login_result.status_code, 200)
+        self.assertIn(b'Admin Control Center', login_result.data)
+
 if __name__ == '__main__':
     unittest.main()

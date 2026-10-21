@@ -1,7 +1,7 @@
 # One-click deploy on Render (https://render.com). Persistent disk keeps the SQLite DB across restarts.
 services:
   - type: web
-    name: kisan-sahayak
+    name: shram-setu
     runtime: python
     plan: starter            # persistent disks need a paid plan; free plan resets the DB on redeploy
     buildCommand: pip install -r requirements.txt
