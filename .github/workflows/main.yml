@@ -26,12 +26,17 @@ jobs:
           gradle-version: '8.7'
 
       - name: Copy Flask app into Android assets
-        run: ./sync_webapp.sh
+        run: |
+          cd Kisan-Sahayak-main
+          ./sync_webapp.sh
 
       - name: Build APK
-        run: gradle -p android assembleDebug --no-daemon
+        run: |
+          cd Kisan-Sahayak-main/android
+          gradle assembleDebug --no-daemon
 
-      - uses: actions/upload-artifact@v4
+      - name: Upload APK
+        uses: actions/upload-artifact@v4
         with:
           name: KisanSahayak-apk
-          path: android/app/build/outputs/apk/debug/app-debug.apk
+          path: Kisan-Sahayak-main/android/app/build/outputs/apk/debug/app-debug.apk
