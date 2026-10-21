@@ -1,0 +1,25 @@
+# One-click deploy on Render (https://render.com). Persistent disk keeps the SQLite DB across restarts.
+services:
+  - type: web
+    name: kisan-sahayak
+    runtime: python
+    plan: starter            # persistent disks need a paid plan; free plan resets the DB on redeploy
+    buildCommand: pip install -r requirements.txt
+    startCommand: gunicorn app:app --workers 2 --bind 0.0.0.0:$PORT
+    envVars:
+      - key: SECRET_KEY
+        generateValue: true
+      - key: SESSION_COOKIE_SECURE
+        value: "True"
+      - key: KISAN_DB_PATH
+        value: /data/database.db
+      - key: ADMIN_USERNAME
+        sync: false
+      - key: ADMIN_PASSWORD
+        sync: false
+      - key: DATA_GOV_API_KEY
+        sync: false
+    disk:
+      name: kisan-data
+      mountPath: /data
+      sizeGB: 1

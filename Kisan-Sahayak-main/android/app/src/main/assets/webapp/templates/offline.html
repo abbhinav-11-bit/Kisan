@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% block title %}Offline — Kisan Sahayak{% endblock %}
+{% block content %}
+<section style="min-height:60vh;display:flex;align-items:center;justify-content:center;text-align:center;padding:3rem 1rem;">
+  <div style="max-width:420px;">
+    <div style="font-size:3.5rem;color:#15803d;"><i class="fa-solid fa-wifi"></i></div>
+    <h1 style="margin:1rem 0 .5rem;">You're offline</h1>
+    <p style="color:#64748b;">इंटरनेट कनेक्शन नहीं है। Pages you opened before are still available. Live weather, mandi rates and the community need internet.</p>
+    <button onclick="location.reload()" class="btn btn-primary" style="margin-top:1.25rem;">Try again</button>
+    <p style="margin-top:1.5rem;color:#475569;">Kisan Call Center: <a href="tel:18001801551"><strong>1800-180-1551</strong></a></p>
+  </div>
+</section>
+{% endblock %}
