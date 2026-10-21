@@ -1,4 +1,5 @@
 name: Build Android APK
+
 on:
   push:
     branches: [main, master]
@@ -7,6 +8,7 @@ on:
 jobs:
   apk:
     runs-on: ubuntu-latest
+
     steps:
       - uses: actions/checkout@v4
 
@@ -33,5 +35,3 @@ jobs:
         with:
           name: KisanSahayak-apk
           path: android/app/build/outputs/apk/debug/app-debug.apk
-
-          gradle -p android assembleDebug --no-daemon
