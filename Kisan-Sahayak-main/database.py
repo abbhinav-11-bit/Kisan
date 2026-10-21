@@ -232,7 +232,12 @@ def seed_data(conn, force_reset=False):
     users_data = [
         ('Ramesh Kumar', 'ramesh_kumar', 'ramesh.farmer@gmail.com', generate_password_hash('farmer123'), 'Punjab', 'Seeds & Crops', 'user'),
         ('Sunita Devi', 'sunita_devi', 'sunita.devi@yahoo.com', generate_password_hash('farmer123'), 'Madhya Pradesh', 'Organic Farming', 'user'),
-        ('Balwinder Singh', 'balwinder_singh', 'balwinder@agrimail.in', generate_password_hash('farmer123'), 'Haryana', 'Farming Tools', 'user')
+        ('Balwinder Singh', 'balwinder_singh', 'balwinder@agrimail.in', generate_password_hash('farmer123'), 'Haryana', 'Farming Tools', 'user'),
+        ('Amit Verma', 'amit_verma', 'amit.verma.agri@gmail.com', generate_password_hash('farmer123'), 'Maharashtra', 'Vegetables & Spices', 'user'),
+        ('Neelam Patil', 'neelam_patil', 'neelam.patil@yahoo.in', generate_password_hash('farmer123'), 'Maharashtra', 'Marketplace', 'user'),
+        ('Gurdeep Kaur', 'gurdeep_kaur', 'gurdeep.kaur@agrihub.in', generate_password_hash('farmer123'), 'Punjab', 'Irrigation Equipment', 'user'),
+        ('Rajesh Yadav', 'rajesh_yadav', 'rajesh.yadav@kisanmail.com', generate_password_hash('farmer123'), 'Uttar Pradesh', 'Income Support Schemes', 'user'),
+        ('Sanjana Reddy', 'sanjana_reddy', 'sanjana.reddy@greenfield.co.in', generate_password_hash('farmer123'), 'Telangana', 'Credit & Loans', 'user')
     ]
     for u in users_data:
         existing = cursor.execute("SELECT id FROM users WHERE username = ?", (u[1],)).fetchone()

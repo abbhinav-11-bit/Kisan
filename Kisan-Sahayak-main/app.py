@@ -1287,6 +1287,7 @@ def admin_dashboard():
 
     stats = {
         'total_users': conn.execute("SELECT COUNT(*) FROM users").fetchone()[0],
+        'total_farmers': conn.execute("SELECT COUNT(*) FROM users WHERE role != 'admin'").fetchone()[0],
         'total_resources': conn.execute("SELECT COUNT(*) FROM resources").fetchone()[0],
         'total_categories': conn.execute("SELECT COUNT(*) FROM categories").fetchone()[0],
         'total_feedback': conn.execute("SELECT COUNT(*) FROM feedback").fetchone()[0],
@@ -1305,6 +1306,20 @@ def admin_dashboard():
 
     users_list = conn.execute("SELECT * FROM users ORDER BY created_at DESC").fetchall()
     categories_list = conn.execute("SELECT * FROM categories ORDER BY name ASC").fetchall()
+    farmer_usage = conn.execute("""
+    SELECT id, full_name, username, email, state, preferred_category, role, created_at,
+           'App Registration / Farmer Onboarding' AS source_type
+    FROM users
+    WHERE role != 'admin'
+    ORDER BY created_at DESC
+    """).fetchall()
+    farmer_state_summary = conn.execute("""
+    SELECT state, COUNT(*) as farmer_count
+    FROM users
+    WHERE role != 'admin'
+    GROUP BY state
+    ORDER BY farmer_count DESC, state ASC
+    """).fetchall()
 
     feedback_list = conn.execute("""
     SELECT f.*, u.full_name, u.username, r.title as resource_title
@@ -1331,6 +1346,8 @@ def admin_dashboard():
         resources=resources_list,
         users=users_list,
         categories=categories_list,
+        farmer_usage=farmer_usage,
+        farmer_state_summary=farmer_state_summary,
         feedback_list=feedback_list,
         posts=posts_list
     )

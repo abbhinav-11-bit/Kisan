@@ -209,5 +209,24 @@ class KisanSahayakTestCase(unittest.TestCase):
                                   headers={'X-Requested-With': 'XMLHttpRequest'})
         self.assertEqual(res400.status_code, 400)
 
+    def test_12_admin_farmer_usage_data_is_visible_only_to_admin(self):
+        """Admin should see farmer usage summary and sample farmer records, while regular users cannot."""
+        self.client.get('/logout')
+        admin_login = self.client.post('/login', data={'username_or_email': 'custom_admin', 'password': 'SecureAdminPass2026!'}, follow_redirects=True)
+        self.assertEqual(admin_login.status_code, 200)
+        self.assertIn(b'Farmer Usage Overview', admin_login.data)
+        self.assertIn(b'Ramesh Kumar', admin_login.data)
+        self.assertIn(b'Punjab', admin_login.data)
+
+        self.client.get('/logout')
+        farmer_login = self.client.post('/login', data={'username_or_email': 'ramesh_kumar', 'password': 'farmer123'}, follow_redirects=True)
+        self.assertEqual(farmer_login.status_code, 200)
+        self.assertIn(b'Welcome back, Ramesh Kumar!', farmer_login.data)
+
+        farmer_admin_page = self.client.get('/admin', follow_redirects=True)
+        self.assertEqual(farmer_admin_page.status_code, 200)
+        self.assertIn(b'Access denied', farmer_admin_page.data)
+        self.assertNotIn(b'Farmer Usage Overview', farmer_admin_page.data)
+
 if __name__ == '__main__':
     unittest.main()
